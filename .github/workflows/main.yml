@@ -23,8 +23,9 @@ jobs:
 
      #finally build your app with the latest command
       - name: Build and test with Maven
-        run: mvn clean verify mvn -B verify sonar:sonar -Dsonar.projectKey=devops2aurelievidal_devops2 -Dsonar.organization=devops2aurelievidal -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{ secrets.SONAR_TOKEN }}  --file ./Backend_API/simple-api/pom.xml
+        run: mvn clean verify
         working-directory : Backend_API/simple-api-student
+
 
   build-and-push-docker-image:
     needs: test-backend
@@ -46,7 +47,7 @@ jobs:
           # relative path to the place where source code with Dockerfile is located
           context: ./Backend_API/simple-api-student
           # Note: tags has to be all lower-case
-          tags:  ${{secrets.DOCKERHUB_USERNAME}}/devops2/backend_api/simple-api-student
+          tags:  ${{secrets.DOCKERHUB_USERNAME}}/backend
           push: ${{ github.ref == 'refs/heads/main' }}
 
       - name: Build image and push database
@@ -55,7 +56,7 @@ jobs:
           # relative path to the place where source code with Dockerfile is located
           context: ./Database
           # Note: tags has to be all lower-case
-          tags:  ${{secrets.DOCKERHUB_USERNAME}}/devops2/database 
+          tags:  ${{secrets.DOCKERHUB_USERNAME}}/database 
           push: ${{ github.ref == 'refs/heads/main' }}
 
       - name: Build image and push httpd
@@ -64,5 +65,5 @@ jobs:
           # relative path to the place where source code with Dockerfile is located
           context: ./HTTP_Server
           # Note: tags has to be all lower-case
-          tags:  ${{secrets.DOCKERHUB_USERNAME}}/devops2/http_server
+          tags:  ${{secrets.DOCKERHUB_USERNAME}}/http
           push: ${{ github.ref == 'refs/heads/main' }}
