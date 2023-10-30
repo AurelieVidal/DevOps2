@@ -6,12 +6,12 @@ on:
       - main
       - develop
   pull_request:
-  on:
-    workflow_run:
+  workflow_run:
       workflows:
         - Preflight
       types:
         - completed
+    
 
 jobs:
   test-backend: 
