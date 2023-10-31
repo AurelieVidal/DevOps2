@@ -1,0 +1,10 @@
+- name: Launch database
+  docker_container:
+    name: data
+    image: avidal373/database:latest
+    pull: true
+    recreate: true
+    networks: 
+      - name: app-network
+  vars:
+    ansible_python_interpreter: /usr/bin/python3

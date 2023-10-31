@@ -1,0 +1,12 @@
+- name: Launch front
+  docker_container:
+    name: front
+    image: avidal373/front:latest
+    pull: true
+    recreate: true
+    networks: 
+      - name: app-network
+    ports:
+      - "8081:80"
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
