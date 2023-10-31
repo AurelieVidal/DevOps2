@@ -1,0 +1,5 @@
+---
+- hosts: localhost
+  remote_user: root
+  roles:
+    - ../../mnt/c/Users/aurel/Documents/devops/TP/roles/docker

@@ -8,6 +8,8 @@ services:
           - app-network
         depends_on:
           - database
+        ports:
+          - "8080:8080"
 
     database:
         build: ./Database
@@ -22,6 +24,16 @@ services:
         container_name: httpd
         ports:
           - "80:80"
+        networks:
+          - app-network
+        depends_on:
+          - front
+
+    front:
+        build: ./devops-front-main
+        container_name: front
+        ports:
+          - "8081:80"
         networks:
           - app-network
         depends_on:

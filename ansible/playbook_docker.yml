@@ -1,0 +1,12 @@
+---
+- hosts: all
+  gather_facts: false
+  become: true
+  roles:
+    - docker
+    - network
+    - database
+    - back
+    - front
+    - http
+    

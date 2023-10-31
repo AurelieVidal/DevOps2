@@ -1,0 +1,13 @@
+- name: Launch http server
+  docker_container:
+    name: httpd
+    image: avidal373/http:latest
+    pull: true
+    recreate: true
+    networks: 
+      - name: app-network
+    ports:
+      - "80:80"
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+
