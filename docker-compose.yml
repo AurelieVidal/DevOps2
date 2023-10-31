@@ -30,7 +30,7 @@ services:
           - front
 
     front:
-        build: ./devops-front
+        build: ./devops-front-main
         container_name: front
         ports:
           - "8081:80"
