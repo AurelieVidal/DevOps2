@@ -4,8 +4,6 @@
     image: avidal373/backend:latest
     pull: true
     recreate: true
-    ports:
-      - "8080:8080"
     networks: 
       - name: app-network
       
